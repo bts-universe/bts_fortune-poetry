@@ -1542,6 +1542,11 @@ async function downloadFortuneImage() {
 }
 
 async function renderCardToPng(card) {
+    if (document.fonts) {
+        await document.fonts.load('700 24px "Noto Serif TC"');
+        await document.fonts.ready;
+    }
+
     const cardRect = card.getBoundingClientRect();
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
@@ -1578,9 +1583,10 @@ async function renderCardToPng(card) {
     ctx.shadowBlur = 6;
     ctx.shadowOffsetX = 2;
     ctx.shadowOffsetY = 2;
-    ctx.font = `${songStyle.style} ${songStyle.weight} ${songStyle.fontSize}px "Microsoft JhengHei", "PingFang TC", sans-serif`;
+    ctx.font = `${songStyle.style} ${songStyle.weight} ${songStyle.fontSize}px "Noto Serif TC", "Source Han Serif TC", serif`;
+    ctx.textAlign = 'center';
     ctx.textBaseline = 'alphabetic';
-    ctx.fillText(textOf('#res-song-name'), songRect.x, songRect.y + songStyle.fontSize * 1.05);
+    ctx.fillText(textOf('#res-song-name'), songRect.x + songRect.w / 2, songRect.y + songStyle.fontSize * 1.05, songRect.w);
     ctx.restore();
 
     drawCanvasButton(ctx, scaledRectForPng('#link-spotify', cardRect, scaleX, scaleY), 'Spotify', '#1DB954');
@@ -1970,7 +1976,7 @@ function drawCanvasButton(ctx, rect, label, color) {
     ctx.fillStyle = color;
     ctx.fill();
     ctx.fillStyle = '#fff';
-    ctx.font = `700 ${Math.max(18, rect.h * 0.42)}px "Microsoft JhengHei", "PingFang TC", sans-serif`;
+    ctx.font = `700 ${Math.max(18, rect.h * 0.42)}px "Noto Serif TC", "Source Han Serif TC", serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(label, rect.x + rect.w / 2, rect.y + rect.h / 2);
@@ -1991,7 +1997,7 @@ function drawWrappedCanvasText(ctx, text, x, y, maxWidth, options) {
         letterSpacing = 0
     } = options;
     const content = String(text || '').trim();
-    const font = `${style} ${weight} ${fontSize}px "Microsoft JhengHei", "PingFang TC", sans-serif`;
+    const font = `${style} ${weight} ${fontSize}px "Noto Serif TC", "Source Han Serif TC", serif`;
     const lines = wrapTextForCanvas(ctx, content, maxWidth, font, maxLines, letterSpacing);
     const totalHeight = fontSize + Math.max(0, lines.length - 1) * lineHeight;
     const startY = verticalAlign === 'middle' && boxHeight
