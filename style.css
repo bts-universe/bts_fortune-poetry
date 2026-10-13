@@ -9,7 +9,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    font-family: 'Noto Serif TC', 'Songti TC', 'PMingLiU', serif;
 }
 
 body {
@@ -249,7 +249,7 @@ body::before {
 
 .history-item {
     display: grid;
-    grid-template-columns: 44px minmax(0, 1fr);
+    grid-template-columns: 56px minmax(0, 1fr);
     gap: 10px;
     align-items: start;
     padding: 9px;
@@ -259,10 +259,11 @@ body::before {
 }
 
 .history-item img {
-    width: 44px;
-    height: 44px;
-    object-fit: cover;
-    border-radius: 7px;
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    transform: translateY(-6px);
 }
 
 .history-item h3 {
@@ -270,9 +271,8 @@ body::before {
     font-size: 0.86rem;
     line-height: 1.25;
     margin: 0 0 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 .history-item p,
@@ -284,10 +284,8 @@ body::before {
 }
 
 .history-item p {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 .visitor-count {
@@ -431,47 +429,6 @@ body::before {
     border-color: #fff;
 }
 
-.btn:disabled,
-.btn.is-loading {
-    cursor: wait;
-    opacity: 0.72;
-    transform: none;
-    box-shadow: 0 0 14px rgba(156, 39, 176, 0.36);
-}
-
-.preload-status {
-    width: min(320px, calc(100vw - 48px));
-    margin-top: 16px;
-    color: rgba(234, 223, 255, 0.86);
-    font-size: 0.82rem;
-    line-height: 1.4;
-}
-
-.preload-track {
-    display: block;
-    width: 100%;
-    height: 7px;
-    margin-top: 8px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.14);
-    overflow: hidden;
-    box-shadow: inset 0 0 8px rgba(0,0,0,0.35);
-}
-
-.preload-bar {
-    display: block;
-    width: 0%;
-    height: 100%;
-    border-radius: inherit;
-    background: linear-gradient(90deg, #7b4dff 0%, #c5a059 100%);
-    box-shadow: 0 0 12px rgba(197, 160, 89, 0.58);
-    transition: width 0.25s ease;
-}
-
-.preload-status.is-complete {
-    color: rgba(197, 160, 89, 0.95);
-}
-
 /* ==========================================================================
     🎯 籤筒與動畫區
    ========================================================================== */
@@ -479,7 +436,7 @@ body::before {
     position: relative;
     width: 100%;       
     max-width: 600px;   
-    height: 500px;      
+    height: clamp(360px, 52vw, 500px);      
     margin-top: -30px;  
     margin-bottom: 10px;
     display: flex;
@@ -488,7 +445,7 @@ body::before {
 }
 
 .bucket-wrapper {
-    width: 640px;       
+    width: min(100%, 640px);       
     cursor: pointer;
     z-index: 5;         
     position: relative;
@@ -514,27 +471,30 @@ body::before {
 
 /* 🎋 飛出來的籤枝：強制鎖死尺寸，保證所有圖片（含PNG）大小絕對一致 */
 .flying-stick {
-    position: absolute; 
-    width: 450px;       
-    height: 1200px;     /* 鎖定固定長度，防止多個籤高低長短不一 */
+    position: fixed; 
+    width: 675px;       
+    height: 1800px;     /* 將目前尺寸縮小一半 */
+    max-width: 67.5vw;
+    max-height: 60svh;
     object-fit: contain;/* 確保籤枝等比例完整顯示，絕不縮水或變形 */
-    top: 150px;         
+    top: 50%;         
     left: 50%;
-    transform: translate(-50%, 0); 
+    transform: translate(-50%, -50%); 
     display: none;      
     z-index: 99;        
 }
 
 .shoot-up {
     display: block;
-    animation: steelShoot 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
+    animation: steelShoot 2.2s ease-in-out forwards; 
 }
 
 @keyframes steelShoot {
-    0% { transform: translate(-50%, 180px); opacity: 0; }
-    15% { transform: translate(-50%, 120px); opacity: 1; }
-    85% { transform: translate(-50%, -400px); opacity: 1; }
-    100% { transform: translate(-50%, -900px); opacity: 0; }
+    0% { transform: translate(-50%, -35%); opacity: 0; }
+    14% { transform: translate(-50%, -50%); opacity: 1; }
+    37% { transform: translate(-50%, -50%); opacity: 1; }
+    85% { transform: translate(-50%, -150%); opacity: 1; }
+    100% { transform: translate(-50%, -200%); opacity: 0; }
 }
 
 .hint-text {
@@ -624,30 +584,11 @@ body::before {
     margin: 0;
 }
 
-.res-cover-box {
-    position: absolute;
-    
-    /* ─── 終極定心丸：全像素鎖定，位置與大小全面回歸白線框 ─── */
-    top: 61.5%;
-    left: 1.5%;
-    width: 44%;
-    aspect-ratio: 1 / 1;
-    height: auto;
-    
-    }
-
-/* 歌曲封面圖片本體：維持滿版裁剪不變形 */
-#res-cover {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;  
-}
-
 .res-song-info {
     position: absolute;
-    top: 67.5%;                 
-    left: 47%;                  
-    width: 70%;
+    top: 67%;                 
+    left: 8%;                  
+    width: 84%;
     height: auto;              
     display: flex;
     flex-direction: column;
@@ -659,7 +600,7 @@ body::before {
     font-size: clamp(0.5rem, 3.5vw, 1rem);
     font-weight: bold;
     color: #ffffff;
-    text-align: left;
+    text-align: center;
     margin: 0;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
     white-space: nowrap;
@@ -670,9 +611,13 @@ body::before {
 
 .music-links {
     display: flex;
+    align-self: center;
+    
     flex-wrap: nowrap;
     gap: 8px;
     margin-top: 20px;
+    margin-left: 0;
+    transform: none;
 }
 
 .music-links a {
@@ -771,6 +716,271 @@ body::before {
     margin: 0;
 }
 
+.army-wall {
+    position: relative;
+    z-index: 2;
+    width: min(980px, calc(100vw - 32px));
+    margin: 56px auto 34px;
+    padding: clamp(18px, 4vw, 34px);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 18px;
+    background:
+        linear-gradient(145deg, rgba(25, 8, 49, 0.9), rgba(17, 4, 35, 0.82)),
+        radial-gradient(circle at 12% 10%, rgba(197, 160, 89, 0.18), transparent 32%),
+        radial-gradient(circle at 82% 22%, rgba(81, 201, 206, 0.14), transparent 30%);
+    box-shadow: 0 24px 54px rgba(0,0,0,0.34), 0 0 34px rgba(156,39,176,0.28);
+    backdrop-filter: blur(16px);
+}
+
+.army-wall-header,
+.army-wall-tools,
+.army-wall-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.army-wall-header {
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+.army-wall-kicker {
+    color: #c5a059;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+}
+
+.army-wall h2 {
+    color: #fff;
+    font-size: clamp(1.5rem, 4vw, 2.15rem);
+    line-height: 1.2;
+    text-shadow: 0 0 18px rgba(205, 157, 255, 0.78);
+}
+
+.army-wall-counter {
+    min-width: 96px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: #fff;
+    text-align: center;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.16);
+}
+
+.army-wall-counter span {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #f2d583;
+}
+
+.army-wall-counter small {
+    color: rgba(234, 223, 255, 0.78);
+    font-size: 0.74rem;
+}
+
+.army-wall-form {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.message-field {
+    display: grid;
+    gap: 8px;
+    text-align: left;
+    color: #eadfff;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.message-field textarea {
+    width: 100%;
+    min-height: 118px;
+    resize: vertical;
+    color: #fff;
+    background: rgba(7, 1, 18, 0.66);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 1rem;
+    line-height: 1.7;
+    outline: none;
+    box-shadow: inset 0 0 18px rgba(0,0,0,0.24);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.message-field textarea:focus {
+    border-color: rgba(242, 213, 131, 0.78);
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.16), inset 0 0 18px rgba(0,0,0,0.24);
+}
+
+.message-field textarea::placeholder {
+    color: rgba(234, 223, 255, 0.5);
+}
+
+.message-prompts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.message-prompts button {
+    min-height: 34px;
+    padding: 7px 11px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #eadfff;
+    background: rgba(255,255,255,0.08);
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 700;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.message-prompts button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(242, 213, 131, 0.62);
+    background: rgba(197, 160, 89, 0.14);
+}
+
+.message-prompts button.is-active,
+.message-prompts button[aria-pressed="true"] {
+    border-color: rgba(242, 213, 131, 0.78);
+    color: #fff7d7;
+    background: rgba(197, 160, 89, 0.2);
+    box-shadow: 0 0 14px rgba(197, 160, 89, 0.24);
+}
+
+.army-wall-actions {
+    flex: 0 0 auto;
+}
+
+#army-message-limit {
+    color: rgba(234, 223, 255, 0.7);
+    font-size: 0.82rem;
+    white-space: nowrap;
+}
+
+.army-wall-submit {
+    border: none;
+    padding: 10px 22px;
+    background: linear-gradient(90deg, #7b4dff 0%, #c5a059 100%);
+    box-shadow: 0 0 17px rgba(197, 160, 89, 0.38);
+}
+
+.army-wall-board {
+    min-height: 220px;
+    max-height: min(430px, 62vh);
+    overflow-y: auto;
+    padding-right: 8px;
+    scrollbar-color: rgba(242, 213, 131, 0.72) rgba(255,255,255,0.08);
+    scrollbar-width: thin;
+}
+
+.army-wall-board::-webkit-scrollbar {
+    width: 8px;
+}
+
+.army-wall-board::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.08);
+    border-radius: 999px;
+}
+
+.army-wall-board::-webkit-scrollbar-thumb {
+    background: rgba(242, 213, 131, 0.72);
+    border-radius: 999px;
+}
+
+.army-wall-empty {
+    color: rgba(234, 223, 255, 0.68);
+    padding: 30px 12px;
+    text-align: center;
+    line-height: 1.7;
+}
+
+.army-message-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+
+.army-message-card {
+    display: grid;
+    grid-template-columns: 54px minmax(0, 1fr);
+    gap: 12px;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.075);
+    text-align: left;
+}
+
+.army-message-avatar {
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    padding: 7px;
+    background: radial-gradient(circle, rgba(255,255,255,0.24), rgba(112, 57, 193, 0.28));
+    border: 1px solid rgba(255,255,255,0.24);
+    box-shadow: 0 0 18px rgba(205, 157, 255, 0.46);
+}
+
+.army-message-avatar-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+}
+
+.army-message-meta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 7px;
+}
+
+.army-message-name {
+    color: #f2d583;
+    font-size: 0.92rem;
+    font-weight: 800;
+}
+
+.army-message-time {
+    color: rgba(234, 223, 255, 0.55);
+    font-size: 0.72rem;
+    white-space: nowrap;
+}
+
+.army-message-target {
+    margin: 0 0 6px;
+    color: #f2d583;
+    font-size: 0.8rem;
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+.army-message-text {
+    color: #f7f0ff;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    word-break: break-word;
+}
+
+.army-wall-note {
+    margin-top: 16px;
+    color: rgba(234, 223, 255, 0.62);
+    font-size: 0.78rem;
+    line-height: 1.6;
+}
+
 @media (max-width: 600px) {
     html,
     body {
@@ -851,12 +1061,6 @@ body::before {
         letter-spacing: 3px;
     }
 
-    .preload-status {
-        width: min(300px, calc(100vw - 40px));
-        margin-top: 14px;
-        font-size: 0.78rem;
-    }
-
     .section-title {
         font-size: 1.35rem;
     }
@@ -866,21 +1070,21 @@ body::before {
     }
 
     .bucket-container {
-        width: 100vw;
-        max-width: 100vw;
-        height: 420px;
+        width: 100%;
+        max-width: 100%;
+        height: clamp(300px, 110vw, 420px);
         margin-top: -12px;
-        margin-left: calc(50% - 50vw);
+        margin-left: 0;
         overflow: visible;
     }
 
     .bucket-wrapper {
-        width: min(680px, 132vw);
+        width: min(100%, 600px);
         max-width: none;
         margin-top: 8px;
-        margin-left: 50%;
+        margin-left: 0;
         left: auto;
-        transform: translateX(-50%);
+        transform: none;
         flex: 0 0 auto;
     }
 
@@ -889,17 +1093,17 @@ body::before {
     }
 
     @keyframes mobileShake {
-        0%, 100% { transform: translateX(-50%) rotate(0deg); }
-        20% { transform: translateX(calc(-50% - 5px)) rotate(-10deg); }
-        40% { transform: translateX(calc(-50% + 5px)) rotate(8deg); }
-        60% { transform: translateX(calc(-50% - 4px)) rotate(-7deg); }
-        80% { transform: translateX(calc(-50% + 4px)) rotate(6deg); }
+        0%, 100% { transform: rotate(0deg); }
+        20% { transform: rotate(-10deg) translateX(-5px); }
+        40% { transform: rotate(8deg) translateX(5px); }
+        60% { transform: rotate(-7deg) translateX(-4px); }
+        80% { transform: rotate(6deg) translateX(4px); }
     }
 
     .flying-stick {
-        width: 330px;
-        height: 900px;
-        top: 120px;
+        width: min(67.5vw, 495px);
+        height: min(60svh, 1350px);
+        top: 50%;
     }
 
     .hint-text {
@@ -913,10 +1117,11 @@ body::before {
     }
 
     .res-song-info {
-        width: 50%;
+        width: 84%;
     }
 
     .music-links {
+        margin-left: 0; 
         gap: 4px;
     }
 
@@ -954,6 +1159,57 @@ body::before {
         padding: 0 16px;
         font-size: 0.68rem;
     }
+
+    .army-wall {
+        width: calc(100vw - 24px);
+        margin: 44px auto 24px;
+        padding: 18px 14px;
+        border-radius: 14px;
+    }
+
+    .army-wall-header,
+    .army-wall-tools,
+    .army-wall-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .army-wall-header {
+        gap: 12px;
+    }
+
+    .army-wall-counter {
+        width: 100%;
+    }
+
+    .army-wall-board {
+        max-height: 58vh;
+        padding-right: 6px;
+    }
+
+    .army-message-list {
+        grid-template-columns: 1fr;
+    }
+
+    .army-message-card {
+        grid-template-columns: 48px minmax(0, 1fr);
+        padding: 12px;
+    }
+
+    .army-message-avatar {
+        width: 48px;
+        height: 48px;
+    }
+
+    .army-message-meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .army-wall-submit {
+        width: 100%;
+    }
 }
 
 @media (max-width: 420px) {
@@ -980,11 +1236,11 @@ body::before {
     }
 
     .bucket-container {
-        height: 360px;
+        height: clamp(280px, 90vw, 360px);
     }
 
     .bucket-wrapper {
-        width: min(620px, 138vw);
+        width: min(100%, 560px);
     }
 
     .hint-text {
