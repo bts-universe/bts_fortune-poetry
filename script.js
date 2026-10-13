@@ -1091,7 +1091,7 @@ function renderFortuneHistory() {
         <article class="history-item">
             <img src="${escapeAttribute(item.mark)}" alt="" loading="lazy">
             <div>
-                <h3>♬ ${escapeHtml(item.song)}</h3>
+                <h3>${escapeHtml(item.song.replace(/^[♬♪]\s*/, ''))}</h3>
                 <p>${escapeHtml(item.message)}</p>
             </div>
         </article>
