@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css?v=20261014-mobile-bucket-centered">
+    <link rel="stylesheet" href="./style.css?v=20261014-mobile-draw-spacing">
 
   </head>
     
@@ -123,9 +123,8 @@
               <p class="army-wall-kicker">FROM ARMY, WITH LOVE</p>
               <h2 id="army-wall-title">ARMY 留言牆</h2>
             </div>
-            <div class="army-wall-counter">
-              <span id="army-message-count">0</span>
-              <small>則留言</small>
+            <div class="army-wall-side-tools">
+              <button class="army-wall-admin" id="army-wall-admin" type="button" aria-label="開啟站主管理" title="站主管理">💜</button>
             </div>
           </div>
 
@@ -135,6 +134,10 @@
               <button type="button" data-target="bts" data-prompt="防彈啊，謝謝你們讓我在辛苦的日子裡也能繼續相信自己。" aria-pressed="false">給防彈</button>
               <button type="button" data-target="self" data-prompt="親愛的自己，慢慢來也沒關係，你已經很努力了。" aria-pressed="false">給自己</button>
               <button type="button" data-target="army" data-prompt="給每一位正在努力的阿米：今天也辛苦了，我們一起慢慢變好。" aria-pressed="false">給阿米們</button>
+              <div class="army-wall-counter army-wall-prompt-counter">
+                <span id="army-message-count">0</span>
+                <small>則留言</small>
+              </div>
             </div>
             <label class="message-field" for="army-message-input">
               <span>想對站主、防彈、自己，或阿米們說什麼？</span>
@@ -154,6 +157,7 @@
           </div>
 
           <p class="army-wall-note" id="army-wall-note">留言會匿名顯示在留言牆上。</p>
+          <div class="army-wall-toast" id="army-wall-toast" role="alert" aria-live="assertive" hidden></div>
         </section>
     </div>
 
@@ -165,7 +169,7 @@
     <script>
       window.BTS_ARMY_WALL_API_URL = 'https://bts-army-wall-api.bts-army-wall-api.workers.dev';
     </script>
-    <script src="./script.js?v=20261014-mobile-bucket-centered"></script>
+    <script src="./script.js?v=20261014-mobile-draw-centering"></script>
 
   </body>
   
