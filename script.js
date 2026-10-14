@@ -17,7 +17,7 @@ const btsUniverseFortunes = [
 
         song: "Mikrokosmos",
 
-        message: "在漆黑的深夜裡，不要感到孤單。在這個擁有70億種光芒的世界中，你正在散發著自己獨一無二的色彩，點綴著最美的夜空。",
+        message: "在漆黑的深夜裡，不需感到孤單。在這個擁有70億種光芒的世界中，你正在散發著自己獨一無二的色彩，點綴著最美的夜空。",
 
         lyrics: "夜越是漆黑，那星光將更加閃亮",
         spotify: "https://open.spotify.com/track/0jSccBRnhNU4KtACMQPvco?si=436c5999dc65457f",
@@ -30,7 +30,7 @@ const btsUniverseFortunes = [
 
         song: "Spring Day",
 
-        message: "越過無比漫長且寒冷的冬日末端，直到春風再次徐徐吹來、直到花朵重新綻放。請在那裡再停留一陣子，最渴望的相遇一定會到來。",
+        message: "越過無比漫長且寒冷的冬日末端，直到春風再次徐徐吹來、直到花朵重新綻放。請在那裡停留一陣子，最渴望的相遇一定會到來。",
 
         lyrics: "直到春日再次來臨，直到花朵盛開之時，請再留在那一下",
         spotify: "https://open.spotify.com/track/2j1fFjWHCI9KJSwcuYAOyF?si=26514c9b49d1439c",
@@ -56,7 +56,7 @@ const btsUniverseFortunes = [
 
         song: "Answer: Love Myself",
 
-        message: "不需再用嚴苛的眼光審視自己了。那些不完美的疤痕、犯錯的昨日，全都是屬於你美麗生命星空的一部分。",
+        message: "不需用嚴苛的眼光審視自己，那些不完美的疤痕、犯錯的昨日，全都是屬於你美麗生命星空的一部分。",
 
         lyrics: "也許比起愛著誰，要愛著自己反而更難",
         spotify: "https://open.spotify.com/track/2X3UgVLSA4wYriGIQyYmMA?si=c2718b1aa1384bbc",
@@ -140,7 +140,7 @@ const btsUniverseFortunes = [
 
     { song: "Run BTS", message: "不需要猶豫，相信雙腳走過的每一步。帶著最初的信念，朝著夢想全力奔跑吧！", lyrics: "Run bulletproof run, yeah you gotta run", spotify: "https://open.spotify.com/track/69xohKu8C1fsflYAiSNbwM?si=526a470ac3d54c4a", apple: "https://music.apple.com/tw/song/run-bts/1627575780" },
 
-    { song: "Fire", message: "隨心所欲地去生活吧！反正這是專屬於你的人生。今天偶爾放鬆、偷懶，哪怕輸了也沒有關係！", lyrics: "隨便怎麼活都行，反正是你自己的", spotify: "https://open.spotify.com/track/0aE3V0zgSD2YwkEHW42gxG?si=491b98b268c5463f", apple: "https://music.apple.com/tw/song/burning-up-fire/1598662129" },
+    { song: "Fire", message: "隨心所欲地去生活吧！反正這是專屬於你的人生。偶爾也可以放鬆、偷懶，哪怕輸了也沒有關係！", lyrics: "隨便怎麼活都行，反正是你自己的", spotify: "https://open.spotify.com/track/0aE3V0zgSD2YwkEHW42gxG?si=491b98b268c5463f", apple: "https://music.apple.com/tw/song/burning-up-fire/1598662129" },
 
     { song: "IDOL", message: "無論世界怎麼評價你，無論你在別人眼裡是好是壞。深深愛著此時此刻正在咬牙努力、無比真實的自己。", lyrics: "You can't stop me loving myself", spotify: "https://open.spotify.com/track/1e8J3XClxZbFmvIHLI8CE4?si=659d30c31dd647d0", apple: "https://music.apple.com/tw/song/idol/1598730980" },
 
@@ -150,7 +150,7 @@ const btsUniverseFortunes = [
 
     { song: "Blood Sweat & Tears", message: "毫無保留地釋放你的狂熱與靈魂吧！沉浸在自己真正熱愛的事情中，那專注的模樣正在散發極致的光彩。", lyrics: "我最後的舞步，全都帶走吧", spotify: "https://open.spotify.com/track/2u54HNQamwFuOMLSuhSRom?si=4bc9dd396c8440d5", apple: "https://music.apple.com/tw/song/blood-sweat-tears/1596532481" },
 
-    { song: "DNA", message: "今天遇到的所有巧合與好運都不是偶然。這一切都是刻在宇宙基因與宿命軌道裡的必然緣分。", lyrics: "我們是找到彼此命運的兩個人", spotify: "https://open.spotify.com/track/3uRLwBjI2TahxslcMTvpFs?si=1211bf95c1e54eb5", apple: "https://music.apple.com/tw/song/dna/1596529066" },
+    { song: "DNA", message: "今天遇到的所有巧合與好運都不是偶然。這一切都是宇宙基因與宿命軌道裡的必然緣分。", lyrics: "我們是找到彼此命運的兩個人", spotify: "https://open.spotify.com/track/3uRLwBjI2TahxslcMTvpFs?si=1211bf95c1e54eb5", apple: "https://music.apple.com/tw/song/dna/1596529066" },
 
     { song: "Not Today", message: "今天絕不是向命運低頭或放棄的日子！只要還能奔跑就全力前行，即便辛苦，也要堅定走下去！", lyrics: "沒辦法用走的，就用爬的吧!即使用爬的也要gear up", spotify: "https://open.spotify.com/track/3wyrhwPpV8uhMMEms4vG3X?si=43483be036e747f3", apple: "https://music.apple.com/tw/song/not-today/1596529383" },
 
@@ -213,7 +213,7 @@ const btsUniverseFortunes = [
 
         song: "Louder than bombs",
 
-        message: "釋放你心中積壓的所有情緒吧！用比炸彈更響亮、更堅定力量打破生活中的陰霾，宇宙正在為你祈禱。",
+        message: "釋放你心中積壓的所有情緒吧！用比炸彈更響亮、更堅定的力量打破生活中的陰霾，宇宙正在為你祈禱。",
 
         lyrics: "無論迎來怎樣的波浪，我們也絕不停止對你歌唱",
         spotify: "https://open.spotify.com/track/4Aw8n6r2vuU0KUo1a2nftp?si=d67388dad6314556", apple: "https://music.apple.com/tw/song/louder-than-bombs/1599362866"
@@ -268,7 +268,7 @@ const btsUniverseFortunes = [
 
         song: "Paradise",
 
-        message: "不一定每個人都必須擁有宏大夢想。停下喘口氣也沒關係，此時此刻活著的你，本身就是完美的樂園。",
+        message: "不一定每個人都必須擁有宏大夢想。停下來喘口氣也沒關係，此時此刻活著的你，本身就是完美的樂園。",
 
         lyrics: "沒有夢想也沒關係，你吐出的每個氣息，已是在樂園",
         spotify: "https://open.spotify.com/track/1YO4xJXhh9A1Feg9k8xuy2?si=73e4b5d57c634027", apple: "https://music.apple.com/tw/song/paradise/1598661248"
@@ -345,7 +345,7 @@ const btsUniverseFortunes = [
 
         song: "Euphoria",
 
-        message: "這場跨越漫長黑暗的相遇。彼此就是生命中最美的奇蹟，只要牽起手，荒漠也能一秒化為天堂。",
+        message: "這場跨越漫長黑暗的相遇。彼此就是生命中最美的奇蹟，只要牽起手，荒漠也能瞬間化為大海。",
 
         lyrics: "Take my hands now, you are the cause of my euphoria",
         spotify: "https://open.spotify.com/track/5YMXGBD6vcYP7IolemyLtK?si=a7f599c7dc774934", apple: "https://music.apple.com/tw/song/euphoria/1598730615"
@@ -563,7 +563,7 @@ const btsUniverseFortunes = [
 
 {
 
-        song: "Life Goes On",
+        song: "Life Goes On- August D",
 
         message: "就算世界突然改變，那些珍貴的回憶也不會消失。別害怕，時間在流轉，生活依然會溫柔地繼續前進。",
 
@@ -624,7 +624,7 @@ const btsUniverseFortunes = [
     },
 {
 
-        song: "If I Ruled The World - Jin",
+        song: "If I Ruled The World",
 
         message: "放任想像力在夜空裡自由飛翔吧。在專屬的夢想國度，大膽地在腦海裡勾勒風景，生活本該擁有無數種可能。",
 
@@ -665,7 +665,6 @@ const stickImages = [
 
 let isDrawing = false;
 let currentResult = null;
-let fortuneQueue = [];
 let preloadPromise = Promise.resolve();
 let assetsReady = false;
 let armyMessagesCache = [];
@@ -720,6 +719,15 @@ const historyToggle = document.getElementById('history-toggle');
 const historyPanel = document.getElementById('history-panel');
 const historyListEl = document.getElementById('history-list');
 const historyCountEl = document.getElementById('history-count');
+const songCollectionToggle = document.getElementById('song-collection-toggle');
+const songCollectionDrawer = document.getElementById('song-collection-drawer');
+const songCollectionCountEl = document.getElementById('song-collection-count');
+const songCollectionProgressEl = document.getElementById('song-collection-progress');
+const songCollectionProgressBarEl = document.getElementById('song-collection-progress-bar');
+const songCollectionGroupsEl = document.getElementById('song-collection-groups');
+const collectionCelebrationEl = document.getElementById('collection-celebration');
+const celebrationConfettiEl = document.getElementById('celebration-confetti');
+const celebrationCloseEl = document.getElementById('celebration-close');
 const armyWallForm = document.getElementById('army-wall-form');
 const armyMessageInput = document.getElementById('army-message-input');
 const armyMessageListEl = document.getElementById('army-message-list');
@@ -729,8 +737,11 @@ const armyWallEmptyEl = document.getElementById('army-wall-empty');
 const armyWallNoteEl = document.getElementById('army-wall-note');
 const DEFAULT_VOLUME = 0.5;
 const START_BUTTON_LABEL = startBtn?.innerText || '開啟防彈宇宙';
-const FORTUNE_QUEUE_KEY = 'btsUniverseFortuneQueue';
 const FORTUNE_HISTORY_KEY = 'btsUniverseFortuneHistory';
+const SONG_COLLECTION_KEY = 'btsUniverseSongCollection';
+const SONG_COLLECTION_CELEBRATED_KEY = 'btsUniverseSongCollectionCelebrated';
+const UNIQUE_SONGS = [...new Set(btsUniverseFortunes.map(item => item.song))]
+    .sort((a, b) => a.toUpperCase().localeCompare(b.toUpperCase(), 'en'));
 const historyMarkImages = Array.from({ length: 14 }, (_, index) => `./assets/marks/${index + 1}.png`);
 const ARMY_WALL_KEY = 'btsArmyMessageWall';
 const ARMY_WALL_API_URL = window.BTS_ARMY_WALL_API_URL || '';
@@ -772,8 +783,8 @@ const CARD_BACKGROUND_URL = './assets/bts.jpg';
 initNightSky();
 initMusicSettings();
 initVisitorCount();
-initFortuneQueue();
 initFortuneHistory();
+initSongCollection();
 initArmyWall();
 preloadPromise = preloadUniverseAssets();
 
@@ -902,75 +913,9 @@ function startDrawingAnimation() {
     }, 1450); 
 }
 
-function initFortuneQueue() {
-    fortuneQueue = readFortuneQueue();
-    if (!fortuneQueue.length) {
-        resetFortuneQueue();
-    }
-}
-
 function getNextFortune() {
-    if (!fortuneQueue.length) {
-        resetFortuneQueue(currentResult?.song);
-    }
-
-    let nextIndex = fortuneQueue.shift();
-
-    if (currentResult && btsUniverseFortunes[nextIndex]?.song === currentResult.song && fortuneQueue.length) {
-        fortuneQueue.push(nextIndex);
-        nextIndex = fortuneQueue.shift();
-    }
-
-    saveFortuneQueue();
-    return btsUniverseFortunes[nextIndex] || btsUniverseFortunes[0];
-}
-
-function resetFortuneQueue(excludeSong = '') {
-    const indexes = btsUniverseFortunes
-        .map((_, index) => index)
-        .filter(index => btsUniverseFortunes[index]?.song !== excludeSong);
-    fortuneQueue = shuffleArray(indexes);
-
-    if (excludeSong) {
-        const excludedIndex = btsUniverseFortunes.findIndex(item => item.song === excludeSong);
-        if (excludedIndex >= 0) fortuneQueue.push(excludedIndex);
-    }
-
-    saveFortuneQueue();
-}
-
-function readFortuneQueue() {
-    try {
-        const parsed = JSON.parse(localStorage.getItem(FORTUNE_QUEUE_KEY) || '[]');
-        const validIndexes = new Set(btsUniverseFortunes.map((_, index) => index));
-        const seen = new Set();
-        return Array.isArray(parsed)
-            ? parsed.filter(index => {
-                const isValid = Number.isInteger(index) && validIndexes.has(index) && !seen.has(index);
-                if (isValid) seen.add(index);
-                return isValid;
-            })
-            : [];
-    } catch (error) {
-        return [];
-    }
-}
-
-function saveFortuneQueue() {
-    try {
-        localStorage.setItem(FORTUNE_QUEUE_KEY, JSON.stringify(fortuneQueue));
-    } catch (error) {
-        // The in-memory queue still prevents quick repeats for the current visit.
-    }
-}
-
-function shuffleArray(items) {
-    const shuffled = [...items];
-    for (let i = shuffled.length - 1; i > 0; i -= 1) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
+    const randomIndex = Math.floor(Math.random() * btsUniverseFortunes.length);
+    return btsUniverseFortunes[randomIndex] || btsUniverseFortunes[0];
 }
 
 function getRandomItem(items) {
@@ -1035,7 +980,128 @@ function initFortuneHistory() {
     }
 }
 
+function initSongCollection() {
+    const history = readFortuneHistory();
+    const collected = readSongCollection();
+    history.forEach(item => {
+        if (UNIQUE_SONGS.includes(item.song)) collected.add(item.song);
+    });
+    saveSongCollection(collected);
+    renderSongCollection(collected);
+
+    if (songCollectionToggle && songCollectionDrawer) {
+        songCollectionToggle.addEventListener('click', () => {
+            const isOpen = !songCollectionDrawer.classList.contains('is-collapsed');
+            songCollectionDrawer.classList.toggle('is-collapsed', isOpen);
+            songCollectionToggle.setAttribute('aria-expanded', String(!isOpen));
+            songCollectionDrawer.setAttribute('aria-hidden', String(isOpen));
+        });
+    }
+
+    if (celebrationCloseEl && collectionCelebrationEl) {
+        celebrationCloseEl.addEventListener('click', closeSongCollectionCelebration);
+        collectionCelebrationEl.addEventListener('click', event => {
+            if (event.target === collectionCelebrationEl) closeSongCollectionCelebration();
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && collectionCelebrationEl.classList.contains('is-visible')) {
+                closeSongCollectionCelebration();
+            }
+        });
+    }
+
+    if (collected.size === UNIQUE_SONGS.length) maybeCelebrateSongCollection();
+}
+
+function maybeCelebrateSongCollection() {
+    if (!collectionCelebrationEl) return;
+    try {
+        if (localStorage.getItem(SONG_COLLECTION_CELEBRATED_KEY) === 'true') return;
+        localStorage.setItem(SONG_COLLECTION_CELEBRATED_KEY, 'true');
+    } catch (error) {
+        // Continue with the celebration for this session if storage is unavailable.
+    }
+
+    if (celebrationConfettiEl) {
+        const colors = ['#f8d66d', '#d9b8ff', '#ff8fc7', '#9ee8ff', '#a8f0c6', '#ffffff'];
+        celebrationConfettiEl.innerHTML = Array.from({ length: 64 }, (_, index) => {
+            const left = Math.random() * 100;
+            const delay = Math.random() * 1.1;
+            const duration = 2.8 + Math.random() * 2.1;
+            const drift = `${Math.round(Math.random() * 220 - 110)}px`;
+            const rotate = `${Math.round(Math.random() * 720 - 360)}deg`;
+            const color = colors[index % colors.length];
+            return `<span style="--confetti-left:${left}%;--confetti-delay:${delay}s;--confetti-duration:${duration}s;--confetti-drift:${drift};--confetti-rotate:${rotate};--confetti-color:${color}"></span>`;
+        }).join('');
+    }
+
+    collectionCelebrationEl.classList.remove('is-visible');
+    collectionCelebrationEl.setAttribute('aria-hidden', 'false');
+    requestAnimationFrame(() => collectionCelebrationEl.classList.add('is-visible'));
+    window.setTimeout(() => celebrationCloseEl?.focus(), 250);
+}
+
+function closeSongCollectionCelebration() {
+    if (!collectionCelebrationEl) return;
+    collectionCelebrationEl.classList.remove('is-visible');
+    collectionCelebrationEl.setAttribute('aria-hidden', 'true');
+    songCollectionToggle?.focus();
+}
+
+function readSongCollection() {
+    try {
+        const parsed = JSON.parse(localStorage.getItem(SONG_COLLECTION_KEY) || '[]');
+        return new Set(Array.isArray(parsed) ? parsed.filter(song => UNIQUE_SONGS.includes(song)) : []);
+    } catch (error) {
+        return new Set();
+    }
+}
+
+function saveSongCollection(collected) {
+    try {
+        localStorage.setItem(SONG_COLLECTION_KEY, JSON.stringify([...collected]));
+    } catch (error) {
+        // The collection remains usable for this page session if storage is unavailable.
+    }
+}
+
+function addSongToCollection(song) {
+    if (!UNIQUE_SONGS.includes(song)) return;
+    const collected = readSongCollection();
+    collected.add(song);
+    saveSongCollection(collected);
+    renderSongCollection(collected);
+    if (collected.size === UNIQUE_SONGS.length) maybeCelebrateSongCollection();
+}
+
+function renderSongCollection(collected = readSongCollection()) {
+    const total = UNIQUE_SONGS.length;
+    const found = collected.size;
+    if (songCollectionCountEl) songCollectionCountEl.innerText = `${found} / ${total}`;
+    if (songCollectionProgressEl) songCollectionProgressEl.innerText = `已收集 ${found} / ${total} 首`;
+    if (songCollectionProgressBarEl) songCollectionProgressBarEl.style.width = `${total ? (found / total) * 100 : 0}%`;
+    if (!songCollectionGroupsEl) return;
+
+    const groups = new Map();
+    UNIQUE_SONGS.forEach(song => {
+        const letter = song.match(/[A-Za-z]/)?.[0].toUpperCase() || '#';
+        if (!groups.has(letter)) groups.set(letter, []);
+        groups.get(letter).push(song);
+    });
+
+    const sortedGroups = [...groups.entries()].sort(([a], [b]) => a.localeCompare(b, 'en'));
+    songCollectionGroupsEl.innerHTML = sortedGroups.map(([letter, songs]) => {
+        const groupFound = songs.filter(song => collected.has(song)).length;
+        const tiles = songs.map(song => collected.has(song)
+            ? `<div class="song-collection-tile is-collected" title="${escapeAttribute(song)}">${escapeHtml(song)}</div>`
+            : '<div class="song-collection-tile is-hidden" aria-label="尚未收集">?</div>'
+        ).join('');
+        return `<details class="song-collection-group"><summary><span>${letter}</span><small>${groupFound} / ${songs.length}</small></summary><div class="song-collection-grid">${tiles}</div></details>`;
+    }).join('');
+}
+
 function addFortuneToHistory(result) {
+    addSongToCollection(result.song);
     const history = readFortuneHistory();
     const item = {
         song: result.song,
