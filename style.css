@@ -445,11 +445,11 @@ body::before {
 }
 
 .bucket-wrapper {
-    width: min(100%, 640px);       
+    width: min(100%, 640px);
     cursor: pointer;
-    z-index: 5;         
+    z-index: 5;
     position: relative;
-    margin-top: 20px;   
+    margin-top: 20px;
 }
 
 .bucket-img {
@@ -1079,14 +1079,12 @@ body::before {
     }
 
     .bucket-wrapper {
-        width: min(100%, 600px);
-        max-width: none;
-        margin-top: 8px;
-        margin-left: 0;
-        left: auto;
-        transform: none;
-        flex: 0 0 auto;
-    }
+    width: min(100%, 640px);
+    cursor: pointer;
+    z-index: 5;
+    position: relative;
+    margin-top: 20px;
+}
 
     .shake-animation {
         animation: mobileShake 0.4s ease infinite;
@@ -1240,8 +1238,12 @@ body::before {
     }
 
     .bucket-wrapper {
-        width: min(100%, 560px);
-    }
+    width: min(100%, 640px);
+    cursor: pointer;
+    z-index: 5;
+    position: relative;
+    margin-top: 20px;
+}
 
     .hint-text {
         margin-top: -34px;
@@ -1249,5 +1251,22 @@ body::before {
 
     .result-actions {
         width: calc(100vw - 24px);
+    }
+}
+@media (max-width: 480px) and (orientation: portrait) {
+    .bucket-container {
+        height: clamp(420px, 122vw, 500px);
+    }
+
+    .bucket-wrapper {
+        width: min(132vw, 560px);
+        max-width: none;
+    }
+
+    .flying-stick {
+        width: min(88vw, 600px);
+        height: min(75svh, 1500px);
+        max-width: 88vw;
+        max-height: 75svh;
     }
 }
