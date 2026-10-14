@@ -1627,7 +1627,7 @@ body::before {
         justify-content: center;
         gap: 8px;
         padding: 9px 14px;
-        border-radius: 999px;
+        border-radius: 10px;
     }
 
     .message-prompts .army-wall-prompt-counter span,
