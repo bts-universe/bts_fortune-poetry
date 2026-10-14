@@ -883,6 +883,7 @@ function startDrawingAnimation() {
         const randomStickImg = getRandomItem(stickImages);
         if (flyingStick) {
             flyingStick.src = randomStickImg;
+            positionFlyingStickAtBucket();
             flyingStick.classList.add('shoot-up');
         }
 
@@ -911,6 +912,33 @@ function startDrawingAnimation() {
             switchPage('page-result');
         }, 2200); 
     }, 1450); 
+}
+
+function positionFlyingStickAtBucket() {
+    if (!flyingStick || !bucketWrapper) return;
+    const mobilePortrait = window.matchMedia('(max-width: 480px) and (orientation: portrait)').matches;
+    if (!mobilePortrait) {
+        ['left', 'top', 'width', 'height'].forEach(property => flyingStick.style.removeProperty(property));
+        return;
+    }
+
+    const bucketImage = bucketWrapper.querySelector('.bucket-img');
+    const bucketRect = (bucketImage || bucketWrapper).getBoundingClientRect();
+    const stickWidth = Math.min(window.innerWidth * 1.2, 480);
+    const stickAspectRatio = flyingStick.naturalWidth && flyingStick.naturalHeight
+        ? flyingStick.naturalHeight / flyingStick.naturalWidth
+        : 0.5625;
+    const stickHeight = stickWidth * stickAspectRatio;
+    const drawPageRect = document.getElementById('page-draw')?.getBoundingClientRect();
+    const originLeft = drawPageRect?.left || 0;
+    const originTop = drawPageRect?.top || 0;
+    const launchX = bucketRect.left + bucketRect.width / 2 - originLeft;
+    const launchY = bucketRect.top + bucketRect.height * 0.62 - originTop;
+
+    flyingStick.style.left = `${launchX}px`;
+    flyingStick.style.top = `${launchY - stickHeight * 0.83}px`;
+    flyingStick.style.width = `${stickWidth}px`;
+    flyingStick.style.height = `${stickHeight}px`;
 }
 
 function getNextFortune() {
