@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css?v=20261014-mobile-bucket-size">
+    <link rel="stylesheet" href="./style.css?v=20261014-collection-celebration">
 
   </head>
     
@@ -23,6 +23,29 @@
     <div class="history-panel is-collapsed" id="history-panel">
       <div class="history-panel-title">最近抽到的籤詩</div>
       <div class="history-list" id="history-list"></div>
+    </div>
+  </div>
+  <aside class="song-collection" id="song-collection">
+    <button class="song-collection-toggle" id="song-collection-toggle" type="button" aria-expanded="false" aria-controls="song-collection-drawer">
+      歌曲收藏 <span id="song-collection-count">0 / 70</span>
+    </button>
+    <section class="song-collection-drawer is-collapsed" id="song-collection-drawer" aria-label="歌曲收藏圖鑑" aria-hidden="true">
+      <header class="song-collection-header">
+        <h2>歌曲收藏圖鑑</h2>
+        <p id="song-collection-progress">已收集 0 / 70 首</p>
+        <div class="song-collection-progress-track" aria-hidden="true"><span id="song-collection-progress-bar"></span></div>
+      </header>
+      <div class="song-collection-groups" id="song-collection-groups"></div>
+    </section>
+  </aside>
+  <div class="collection-celebration" id="collection-celebration" aria-hidden="true">
+    <div class="celebration-confetti" id="celebration-confetti" aria-hidden="true"></div>
+    <div class="celebration-content" role="dialog" aria-modal="true" aria-labelledby="celebration-title" aria-describedby="celebration-message">
+      <div class="celebration-poppers" aria-hidden="true"><span>🎉</span><span>🎉</span></div>
+      <div class="celebration-sparkle" aria-hidden="true">✦　✧　✦</div>
+      <h2 id="celebration-title">恭喜阿米成功集齊所有籤詩！</h2>
+      <p id="celebration-message">你已經收集了整個宇宙的祝福，願每一道星光都成為陪伴你的力量！</p>
+      <button class="celebration-close" id="celebration-close" type="button">繼續祈願</button>
     </div>
   </div>
   <div class="volume-control" id="settings-panel" aria-label="背景音樂音量">
@@ -142,7 +165,7 @@
     <script>
       window.BTS_ARMY_WALL_API_URL = 'https://bts-army-wall-api.bts-army-wall-api.workers.dev';
     </script>
-    <script src="./script.js?v=20261014-14-history-marks"></script>
+    <script src="./script.js?v=20261014-collection-celebration"></script>
 
   </body>
   
