@@ -1610,11 +1610,15 @@ body::before {
     }
 
     .army-wall-header {
-        gap: 12px;
+        align-items: flex-start;
+        flex-direction: row;
+        gap: 8px;
+        margin-bottom: 10px;
     }
 
     .army-wall-side-tools {
-        align-self: flex-end;
+        align-self: flex-start;
+        margin-top: -8px;
     }
 
     .army-wall-prompt-counter {
