@@ -1584,19 +1584,43 @@ body::before {
     }
 }
 @media (max-width: 480px) and (orientation: portrait) {
+    #page-draw {
+        position: relative;
+    }
+
     .bucket-container {
-        height: clamp(420px, 122vw, 500px);
+        height: min(170vw, 660px);
+        align-items: center;
+        justify-content: center;
+        margin-top: -4px;
     }
 
     .bucket-wrapper {
-        width: min(132vw, 560px);
+        width: min(170vw, 660px);
         max-width: none;
+        margin-top: 0;
     }
 
     .flying-stick {
-        width: min(88vw, 600px);
-        height: min(75svh, 1500px);
-        max-width: 88vw;
-        max-height: 75svh;
+        position: absolute;
+        width: min(120vw, 480px);
+        height: auto;
+        max-width: none;
+        max-height: none;
+        object-fit: contain;
+    }
+
+    .shoot-up {
+        animation-name: mobileSteelShoot;
+    }
+
+    @keyframes mobileSteelShoot {
+        0%, 12% { transform: translate(-50%, 0); opacity: 0; }
+        22%, 38% { transform: translate(-50%, 0); opacity: 1; }
+        100% { transform: translate(-50%, -175%); opacity: 0; }
+    }
+
+    .hint-text {
+        margin-top: -24px;
     }
 }
