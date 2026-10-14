@@ -735,6 +735,8 @@ const armyMessageCountEl = document.getElementById('army-message-count');
 const armyMessageLimitEl = document.getElementById('army-message-limit');
 const armyWallEmptyEl = document.getElementById('army-wall-empty');
 const armyWallNoteEl = document.getElementById('army-wall-note');
+const armyWallAdminButton = document.getElementById('army-wall-admin');
+const armyWallToastEl = document.getElementById('army-wall-toast');
 const DEFAULT_VOLUME = 0.5;
 const START_BUTTON_LABEL = startBtn?.innerText || '開啟防彈宇宙';
 const FORTUNE_HISTORY_KEY = 'btsUniverseFortuneHistory';
@@ -745,6 +747,17 @@ const UNIQUE_SONGS = [...new Set(btsUniverseFortunes.map(item => item.song))]
 const historyMarkImages = Array.from({ length: 14 }, (_, index) => `./assets/marks/${index + 1}.png`);
 const ARMY_WALL_KEY = 'btsArmyMessageWall';
 const ARMY_WALL_API_URL = window.BTS_ARMY_WALL_API_URL || '';
+const ARMY_WALL_BLOCKED_WORDS = [
+    '白痴', '白癡', '智障', '廢物', '垃圾', '去死', '王八蛋', '混蛋',
+    '他媽的', '幹你娘', '操你媽', 'fuck', 'shit', 'bitch', 'asshole',
+    '他媽', '幹', '操', '操你妹', '靠', '靠北', '靠杯', '靠背', '娘砲', '雞掰',
+    '幹你娘雞掰', '擊敗', '屁眼', '屌', '婊子', '靠么', '87', '78', '草你妹',
+    '三小', '趕羚羊', '草枝擺', '屎', '傻逼', '幹恁娘', '神經病', '有病',
+    '操你媽逼', '蠢貨', '法克', '騷', 'sb', '卧槽', '淫蕩', '屁股', '奶子',
+    '恁娘', '幹你祖母'
+];
+let armyWallOwnerToken = '';
+let armyWallToastTimer = 0;
 const ARMY_MESSAGE_TARGET_LABELS = {
     owner: '站主',
     bts: '防彈',
@@ -932,7 +945,7 @@ function positionFlyingStickAtBucket() {
     const drawPageRect = document.getElementById('page-draw')?.getBoundingClientRect();
     const originLeft = drawPageRect?.left || 0;
     const originTop = drawPageRect?.top || 0;
-    const launchX = bucketRect.left + bucketRect.width / 2 - originLeft;
+    const launchX = bucketRect.left + bucketRect.width / 2 - originLeft - Math.min(window.innerWidth * 0.015, 8);
     const launchY = bucketRect.top + bucketRect.height * 0.62 - originTop;
 
     flyingStick.style.left = `${launchX}px`;
@@ -1210,6 +1223,8 @@ async function initArmyWall() {
         });
     }
 
+    armyWallAdminButton?.addEventListener('click', toggleArmyWallAdmin);
+
     document.querySelectorAll('.message-prompts button[data-prompt]').forEach(button => {
         button.addEventListener('click', () => {
             if (!armyMessageInput) return;
@@ -1241,6 +1256,11 @@ async function addArmyMessage() {
 
     const text = armyMessageInput.value.trim();
     if (!text) {
+        armyMessageInput.focus();
+        return;
+    }
+    if (containsArmyWallBlockedWord(text)) {
+        showArmyWallToast('這段留言包含不適當字詞，請修改後再送出。');
         armyMessageInput.focus();
         return;
     }
@@ -1325,9 +1345,94 @@ function renderArmyWall() {
                 </div>
                 <p class="army-message-target">To：${escapeHtml(getArmyTargetLabel(message.target))}</p>
                 <p class="army-message-text">${escapeHtml(message.text)}</p>
+                ${armyWallOwnerToken ? `<button class="army-message-delete" type="button" data-delete-message="${escapeHtml(message.id)}">刪除留言</button>` : ''}
             </div>
         </article>
     `).join('');
+
+    armyMessageListEl.querySelectorAll('[data-delete-message]').forEach(button => {
+        button.addEventListener('click', () => deleteArmyWallMessage(button.dataset.deleteMessage));
+    });
+}
+
+async function toggleArmyWallAdmin() {
+    if (armyWallOwnerToken) {
+        armyWallOwnerToken = '';
+        armyWallAdminButton.setAttribute('aria-label', '開啟站主管理');
+        armyWallAdminButton.classList.remove('is-active');
+        renderArmyWall();
+        updateArmyWallNote('已退出站主管理模式。');
+        return;
+    }
+
+    if (!ARMY_WALL_API_URL) {
+        updateArmyWallNote('留言牆尚未連接 Cloudflare，無法驗證站主身分。');
+        return;
+    }
+
+    const token = window.prompt('站主管理密碼');
+    if (!token) return;
+    try {
+        const response = await fetch(ARMY_WALL_API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+            body: JSON.stringify({ action: 'verify-owner' })
+        });
+        if (!response.ok) throw new Error('站主密碼錯誤，請再試一次。');
+        armyWallOwnerToken = token;
+        armyWallAdminButton.setAttribute('aria-label', '退出站主管理');
+        armyWallAdminButton.classList.add('is-active');
+        renderArmyWall();
+        updateArmyWallNote('站主模式已開啟；點選留言下方的「刪除留言」即可移除雲端留言。');
+    } catch (error) {
+        updateArmyWallNote(error.message || '站主驗證失敗，請稍後再試。');
+    }
+}
+
+async function deleteArmyWallMessage(messageId) {
+    if (!armyWallOwnerToken || !messageId || !window.confirm('確定要刪除這則留言嗎？刪除後所有訪客都會看不到。')) return;
+    try {
+        const response = await fetch(ARMY_WALL_API_URL, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${armyWallOwnerToken}` },
+            body: JSON.stringify({ id: messageId })
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.error || '刪除失敗，請確認站主密碼。');
+        setArmyMessages(data.messages || []);
+        updateArmyWallNote('留言已從 Cloudflare 刪除，所有訪客都會同步更新。');
+    } catch (error) {
+        updateArmyWallNote(error.message || '刪除失敗，請稍後再試。');
+    }
+}
+
+function showArmyWallToast(message) {
+    if (!armyWallToastEl) return;
+    window.clearTimeout(armyWallToastTimer);
+    armyWallToastEl.hidden = true;
+    armyWallToastEl.textContent = message;
+    window.requestAnimationFrame(() => {
+        armyWallToastEl.hidden = false;
+        armyWallToastEl.classList.remove('is-visible');
+        void armyWallToastEl.offsetWidth;
+        armyWallToastEl.classList.add('is-visible');
+    });
+    armyWallToastTimer = window.setTimeout(() => {
+        armyWallToastEl.classList.remove('is-visible');
+        armyWallToastEl.hidden = true;
+    }, 1500);
+}
+
+function containsArmyWallBlockedWord(text) {
+    const normalizedText = normalizeArmyTextForModeration(text);
+    return ARMY_WALL_BLOCKED_WORDS.some(word => normalizedText.includes(normalizeArmyTextForModeration(word)));
+}
+
+function normalizeArmyTextForModeration(value) {
+    return String(value || '')
+        .normalize('NFKC')
+        .toLocaleLowerCase()
+        .replace(/[\s\p{P}\p{S}_]+/gu, '');
 }
 
 async function refreshSharedArmyMessages() {
