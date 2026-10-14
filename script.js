@@ -731,7 +731,7 @@ const DEFAULT_VOLUME = 0.5;
 const START_BUTTON_LABEL = startBtn?.innerText || '開啟防彈宇宙';
 const FORTUNE_QUEUE_KEY = 'btsUniverseFortuneQueue';
 const FORTUNE_HISTORY_KEY = 'btsUniverseFortuneHistory';
-const historyMarkImages = Array.from({ length: 10 }, (_, index) => `./assets/marks/${index + 1}.png`);
+const historyMarkImages = Array.from({ length: 14 }, (_, index) => `./assets/marks/${index + 1}.png`);
 const ARMY_WALL_KEY = 'btsArmyMessageWall';
 const ARMY_WALL_API_URL = window.BTS_ARMY_WALL_API_URL || '';
 const ARMY_MESSAGE_TARGET_LABELS = {
