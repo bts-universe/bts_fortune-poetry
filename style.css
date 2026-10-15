@@ -1256,7 +1256,16 @@ body::before {
 }
 
 .owner-password-dialog {
+    position: fixed;
+    inset: auto;
+    top: 50%;
+    top: 50dvh;
+    left: 50%;
+    margin: 0;
+    transform: translate(-50%, -50%);
     width: min(420px, calc(100vw - 32px));
+    max-height: calc(100dvh - 32px);
+    overflow: auto;
     padding: 24px;
     border: 1px solid rgba(222, 190, 255, 0.38);
     border-radius: 18px;
@@ -1858,12 +1867,4 @@ body::before {
     }
 
     @keyframes mobileSteelShoot {
-        0%, 12% { transform: translate(-50%, 0); opacity: 0; }
-        22%, 38% { transform: translate(-50%, 0); opacity: 1; }
-        100% { transform: translate(-50%, -175%); opacity: 0; }
-    }
-
-    .hint-text {
-        margin-top: -140px;
-    }
-}
+        0%, 12% { transform: translate(-50%, 0); opacity: 
