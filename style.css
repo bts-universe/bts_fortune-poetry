@@ -366,6 +366,36 @@ body::before {
     font-size: 0.82rem;
 }
 
+.song-collection-heading-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.song-collection-heading-row h2 {
+    margin-bottom: 5px;
+}
+
+.song-collection-progress-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.song-collection-progress-row p {
+    margin: 0;
+}
+
+.song-collection-header .song-collection-sort-note {
+    flex: 0 0 auto;
+    margin: 0;
+    color: rgba(234, 223, 255, 0.42);
+    font-size: 0.72rem;
+    white-space: nowrap;
+}
+
 .song-collection-progress-track {
     height: 7px;
     margin-top: 9px;
@@ -1225,6 +1255,75 @@ body::before {
     box-shadow: 0 0 14px rgba(197, 160, 89, 0.24);
 }
 
+.owner-password-dialog {
+    width: min(420px, calc(100vw - 32px));
+    padding: 24px;
+    border: 1px solid rgba(222, 190, 255, 0.38);
+    border-radius: 18px;
+    color: #f7f0ff;
+    background: linear-gradient(145deg, #28113f, #13071f);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55), 0 0 28px rgba(156, 39, 176, 0.25);
+}
+
+.owner-password-dialog::backdrop {
+    background: rgba(8, 2, 16, 0.72);
+    backdrop-filter: blur(4px);
+}
+
+.owner-password-dialog form {
+    display: grid;
+    gap: 12px;
+}
+
+.owner-password-dialog h2 {
+    margin: 0 0 4px;
+    color: #fff;
+    font-size: 1.25rem;
+}
+
+.owner-password-dialog label {
+    color: rgba(234, 223, 255, 0.82);
+}
+
+.owner-password-dialog input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid rgba(222, 190, 255, 0.4);
+    border-radius: 10px;
+    outline: none;
+    color: #fff;
+    background: rgba(8, 2, 16, 0.78);
+    font: inherit;
+}
+
+.owner-password-dialog input:focus {
+    border-color: #c59cff;
+    box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.24);
+}
+
+.owner-password-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.owner-password-actions button {
+    min-height: 42px;
+    padding: 9px 18px;
+    border: 0;
+    border-radius: 999px;
+    color: #fff;
+    background: #70459c;
+    font: inherit;
+    cursor: pointer;
+}
+
+.owner-password-actions .owner-password-cancel {
+    color: #eadfff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
 .army-wall-actions {
     flex: 0 0 auto;
 }
@@ -1551,6 +1650,15 @@ body::before {
         width: min(378px, 90vw);
     }
 
+    .res-message-box {
+        align-items: center;
+        justify-content: center;
+    }
+
+    #res-message {
+        text-align: center;
+    }
+
     .res-song-info {
         width: 84%;
     }
@@ -1726,14 +1834,14 @@ body::before {
         height: min(145vw, 580px);
         align-items: center;
         justify-content: center;
-        margin-top: -14px;
+        margin-top: -30px;
     }
 
     .bucket-wrapper {
-        width: min(170vw, 660px);
+        width: min(200vw, 760px);
         max-width: none;
         margin-top: 0;
-        top: -16px;
+        top: -26px;
     }
 
     .flying-stick {
@@ -1756,6 +1864,6 @@ body::before {
     }
 
     .hint-text {
-        margin-top: -100px;
+        margin-top: -140px;
     }
 }
