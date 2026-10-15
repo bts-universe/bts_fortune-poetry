@@ -736,7 +736,12 @@ const armyMessageLimitEl = document.getElementById('army-message-limit');
 const armyWallEmptyEl = document.getElementById('army-wall-empty');
 const armyWallNoteEl = document.getElementById('army-wall-note');
 const armyWallAdminButton = document.getElementById('army-wall-admin');
+const ownerPasswordDialog = document.getElementById('owner-password-dialog');
+const ownerPasswordForm = document.getElementById('owner-password-form');
+const ownerPasswordInput = document.getElementById('owner-password-input');
+const ownerPasswordCancelButton = document.getElementById('owner-password-cancel');
 const armyWallToastEl = document.getElementById('army-wall-toast');
+let resolveOwnerPasswordRequest = null;
 const DEFAULT_VOLUME = 0.5;
 const START_BUTTON_LABEL = startBtn?.innerText || '開啟防彈宇宙';
 const FORTUNE_HISTORY_KEY = 'btsUniverseFortuneHistory';
@@ -1224,6 +1229,21 @@ async function initArmyWall() {
         });
     }
 
+    ownerPasswordForm?.addEventListener('submit', event => {
+        event.preventDefault();
+        ownerPasswordDialog?.close('submit');
+    });
+
+    ownerPasswordCancelButton?.addEventListener('click', () => ownerPasswordDialog?.close());
+
+    ownerPasswordDialog?.addEventListener('close', () => {
+        const token = ownerPasswordDialog.returnValue === 'submit' ? ownerPasswordInput?.value || '' : '';
+        if (ownerPasswordInput) ownerPasswordInput.value = '';
+        const resolve = resolveOwnerPasswordRequest;
+        resolveOwnerPasswordRequest = null;
+        resolve?.(token);
+    });
+
     armyWallAdminButton?.addEventListener('click', toggleArmyWallAdmin);
 
     document.querySelectorAll('.message-prompts button[data-prompt]').forEach(button => {
@@ -1371,7 +1391,7 @@ async function toggleArmyWallAdmin() {
         return;
     }
 
-    const token = window.prompt('站主管理密碼');
+    const token = await requestOwnerPassword();
     if (!token) return;
     try {
         const response = await fetch(ARMY_WALL_API_URL, {
@@ -1388,6 +1408,19 @@ async function toggleArmyWallAdmin() {
     } catch (error) {
         updateArmyWallNote(error.message || '站主驗證失敗，請稍後再試。');
     }
+}
+
+function requestOwnerPassword() {
+    return new Promise(resolve => {
+        if (!ownerPasswordDialog?.showModal || !ownerPasswordInput) {
+            resolve('');
+            return;
+        }
+        resolveOwnerPasswordRequest = resolve;
+        ownerPasswordInput.value = '';
+        ownerPasswordDialog.showModal();
+        ownerPasswordInput.focus();
+    });
 }
 
 async function deleteArmyWallMessage(messageId) {
