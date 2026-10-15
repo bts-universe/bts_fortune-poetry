@@ -888,6 +888,7 @@ body::before {
 
 .universe-card-bg {
     position: relative;
+    container-type: inline-size;
     width: min(420px, calc(100vw - 32px));
     height: auto;
     aspect-ratio: 420 / 624;
@@ -916,9 +917,11 @@ body::before {
 #res-message {
     color: #2b1640;
     font-size: clamp(0.78rem, 2.15vw, 0.95rem);
+    font-size: clamp(11px, 3.62cqw, 0.95rem);
     font-weight: 600;
     line-height: 1.7;
     letter-spacing: 1px;
+    letter-spacing: 0.24cqw;
     word-break: break-word;
     text-align: left;         
     width: 100%;
@@ -1659,15 +1662,6 @@ body::before {
         width: min(378px, 90vw);
     }
 
-    .res-message-box {
-        align-items: center;
-        justify-content: center;
-    }
-
-    #res-message {
-        text-align: center;
-    }
-
     .res-song-info {
         width: 84%;
     }
@@ -1840,14 +1834,14 @@ body::before {
     }
 
     .bucket-container {
-        height: min(145vw, 580px);
+        height: min(125vw, 500px);
         align-items: center;
         justify-content: center;
         margin-top: -30px;
     }
 
     .bucket-wrapper {
-        width: min(150vw, 600px);
+        width: min(180vw, 600px);
         max-width: none;
         margin-top: 0;
         top: -26px;
@@ -1864,7 +1858,16 @@ body::before {
 
     .shoot-up {
         animation-name: mobileSteelShoot;
+        animation-duration: 1.4s;
     }
 
     @keyframes mobileSteelShoot {
-        0%, 12% { transform: translate(-50%, 0); opacity: 
+        0%, 12% { transform: translate(-50%, 0); opacity: 0; }
+        22%, 38% { transform: translate(-50%, 0); opacity: 1; }
+        100% { transform: translate(-50%, -175%); opacity: 0; }
+    }
+
+    .hint-text {
+        margin-top: -140px;
+    }
+}
