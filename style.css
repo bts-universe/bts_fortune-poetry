@@ -1847,7 +1847,7 @@ body::before {
     }
 
     .bucket-wrapper {
-        width: min(200vw, 760px);
+        width: min(150vw, 600px);
         max-width: none;
         margin-top: 0;
         top: -26px;
