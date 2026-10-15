@@ -879,6 +879,7 @@ function switchPage(pageId) {
 function startDrawingAnimation() {
     if (isDrawing) return;
     isDrawing = true;
+    const mobilePortrait = window.matchMedia('(max-width: 480px) and (orientation: portrait)').matches;
 
     const shakeSound = document.getElementById('shake-sound');
     const result = getNextFortune();
@@ -909,7 +910,7 @@ function startDrawingAnimation() {
         setTimeout(() => {
             document.getElementById('page-draw')?.classList.add('mystic-transition');
             if (hintText) hintText.innerText = "宇宙星軌正在排列你的答案...";
-        }, 900);
+        }, mobilePortrait ? 650 : 900);
 
         setTimeout(async () => {
             currentResult = result;
@@ -929,7 +930,7 @@ function startDrawingAnimation() {
             addFortuneToHistory(result);
             document.getElementById('page-draw')?.classList.remove('mystic-transition');
             switchPage('page-result');
-        }, 2200); 
+        }, mobilePortrait ? 1400 : 2200); 
     }, 1450); 
 }
 
@@ -2286,10 +2287,4 @@ function drawCanvasTextLine(ctx, text, x, y, letterSpacing = 0, align = 'left') 
 
     const chars = Array.from(text);
     const width = measureCanvasText(ctx, text, letterSpacing);
-    let currentX = align === 'center' ? x - width / 2 : x;
-
-    chars.forEach(char => {
-        ctx.fillText(char, currentX, y);
-        currentX += ctx.measureText(char).width + letterSpacing;
-    });
-}
+    let currentX = align === 'center' ? x - width / 2
