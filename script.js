@@ -2287,4 +2287,10 @@ function drawCanvasTextLine(ctx, text, x, y, letterSpacing = 0, align = 'left') 
 
     const chars = Array.from(text);
     const width = measureCanvasText(ctx, text, letterSpacing);
-    let currentX = align === 'center' ? x - width / 2
+    let currentX = align === 'center' ? x - width / 2 : x;
+
+    chars.forEach(char => {
+        ctx.fillText(char, currentX, y);
+        currentX += ctx.measureText(char).width + letterSpacing;
+    });
+}
