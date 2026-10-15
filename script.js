@@ -1972,16 +1972,16 @@ function initMusicSettings() {
     const initialVolume = DEFAULT_VOLUME;
     bgMusic.volume = initialVolume;
     bgMusic.muted = false;
-    localStorage.setItem('btsMusicVolume', String(initialVolume));
-    localStorage.setItem('btsMusicMuted', 'false');
+    saveMusicPreference('btsMusicVolume', String(initialVolume));
+    saveMusicPreference('btsMusicMuted', 'false');
 
     if (volumeSlider) {
         volumeSlider.value = bgMusic.volume;
         volumeSlider.addEventListener('input', () => {
             bgMusic.volume = Number(volumeSlider.value);
             bgMusic.muted = bgMusic.volume === 0;
-            localStorage.setItem('btsMusicVolume', String(bgMusic.volume));
-            localStorage.setItem('btsMusicMuted', String(bgMusic.muted));
+            saveMusicPreference('btsMusicVolume', String(bgMusic.volume));
+            saveMusicPreference('btsMusicMuted', String(bgMusic.muted));
             updateMuteLabel();
         });
     }
@@ -1997,13 +1997,21 @@ function initMusicSettings() {
             }
 
             if (volumeSlider) volumeSlider.value = bgMusic.volume;
-            localStorage.setItem('btsMusicVolume', String(bgMusic.volume));
-            localStorage.setItem('btsMusicMuted', String(bgMusic.muted));
+            saveMusicPreference('btsMusicVolume', String(bgMusic.volume));
+            saveMusicPreference('btsMusicMuted', String(bgMusic.muted));
             updateMuteLabel();
         });
     }
 
     updateMuteLabel();
+}
+
+function saveMusicPreference(key, value) {
+    try {
+        localStorage.setItem(key, value);
+    } catch (error) {
+        // Music controls should remain usable when this browser blocks local storage.
+    }
 }
 
 function updateMuteLabel() {
